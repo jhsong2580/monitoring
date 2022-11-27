@@ -1,0 +1,6 @@
+
+rootProject.name = 'monitoring'
+
+include 'module-application'
+include 'module-common'
+

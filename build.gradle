@@ -1,0 +1,69 @@
+buildscript {
+	ext {
+		springBootVersion = '2.4.1'
+		dependencyManagementVersion = '1.0.10.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
+		classpath "io.spring.gradle:dependency-management-plugin:${dependencyManagementVersion}"
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+// 하위 모든 프로젝트 공통 세팅
+subprojects {
+	group = 'study'
+	version = '0.0.1-SNAPSHOT'
+//	sourceCompatibility = '1.8'
+
+
+
+
+	apply plugin: 'java'
+	apply plugin: 'org.springframework.boot'
+	apply plugin: 'io.spring.dependency-management'
+
+
+
+
+
+	repositories {
+		mavenCentral()
+	}
+
+	// 하위 모듈에서 공통으로 사용하는 세팅 추가
+	dependencies {
+		implementation 'org.springframework.boot:spring-boot-starter-actuator'
+		implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+		implementation 'org.springframework.boot:spring-boot-starter-data-redis-reactive'
+		implementation 'org.springframework.boot:spring-boot-starter-web'
+		compileOnly 'org.projectlombok:lombok'
+		annotationProcessor 'org.projectlombok:lombok'
+		testImplementation 'org.springframework.boot:spring-boot-starter-test'
+		testImplementation 'io.projectreactor:reactor-test'
+
+	}
+
+	repositories {
+		mavenCentral()
+	}
+
+
+
+	test {
+		useJUnitPlatform()
+	}
+}
+
+project("module-application"){
+	dependencies {
+		implementation project(':module-common')
+	}
+}
+
