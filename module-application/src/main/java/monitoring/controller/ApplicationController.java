@@ -19,4 +19,10 @@ public class ApplicationController {
     public ResponseEntity<List<SectionDetailDTO>> sections (){
         return ResponseEntity.ok(applicationService.details());
     }
+
+    @GetMapping("/api/sleep")
+    public ResponseEntity  sleep(){
+        applicationService.sleep();
+        return ResponseEntity.ok().build();
+    }
 }

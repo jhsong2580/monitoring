@@ -21,4 +21,12 @@ public class ApplicationService {
             .map(SectionDetailDTO::from)
             .collect(Collectors.toList());
     }
+
+    public void sleep(){
+        try {
+            Thread.sleep(3_000L);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
