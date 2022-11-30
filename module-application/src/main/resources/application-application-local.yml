@@ -1,4 +1,6 @@
 spring:
+  application:
+    name: testSpring
   profiles:
     active: application-local
   datasource:
@@ -17,7 +19,29 @@ spring:
         format_sql: true
         show_sql: true
         dialect: org.hibernate.dialect.MySQL57Dialect
+  thymeleaf:
+    prefix: classpath:templates/
+    suffix: .html
+    cache: false
 
+management:
+  endpoint:
+    metrics:
+      enabled: true
+    prometheus:
+      enabled: true
+    health:
+      show-details: always
+
+  endpoints:
+    web:
+      exposure:
+        include: "health, info, metrics, prometheus"
+
+
+  metrics:
+    tags:
+      application: ${spring.application.name}
 #
 #spring.profiles.active=local
 #
