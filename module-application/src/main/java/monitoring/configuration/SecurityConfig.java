@@ -1,5 +1,6 @@
 package monitoring.configuration;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -11,14 +12,16 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-
-
+    @Value("${management.endpoint.auth_user}")
+    private String user;
+    @Value("${management.endpoint.auth_password}")
+    private String password;
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication()
             .passwordEncoder(passwordEncoder())
-            .withUser("actuator")
-            .password(passwordEncoder().encode("changePasword"))
+            .withUser(user)
+            .password(passwordEncoder().encode(password))
             .roles("prometheus-user");
     }
 

@@ -26,6 +26,8 @@ spring:
 
 management:
   endpoint:
+    auth_user: xx
+    auth_password: xx
     metrics:
       enabled: true
     prometheus:
