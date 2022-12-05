@@ -9,7 +9,7 @@ spring:
       max-lifetime: 58000
     username: root
     password: masterpw
-    url: jdbc:mysql://127.0.0.1:3306/subway?useSSL=false&useUnicode=true&serverTimezone=Asia/Seoul
+    url: jdbc:mysql://172.25.192.166:3306/subway?useSSL=false&useUnicode=true&serverTimezone=Asia/Seoul
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
@@ -45,7 +45,7 @@ management:
       application: ${spring.application.name}
 
 server:
-  port: 80
+  port: 8080
 
 actuator_endpoint_user: xx
 actuator_endpoint_passsword: xx
