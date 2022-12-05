@@ -1,7 +1,5 @@
 spring:
 
-  application:
-    name: testSpring
   profiles:
     active: application-local
   datasource:
@@ -42,7 +40,7 @@ management:
 
   metrics:
     tags:
-      application: ${spring.application.name}
+      application: ${spring_application_name}
 
 server:
   port: 80
@@ -52,4 +50,4 @@ server:
     min-response-size: 10240
 
 actuator_endpoint_user: xx
-actuator_endpoint_passsword: xx
+actuator_endpoint_password: xx
