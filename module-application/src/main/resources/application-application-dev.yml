@@ -46,6 +46,10 @@ management:
 
 server:
   port: 8080
+  compression:
+    enabled: true
+    mime-types: text/html,text/plain,text/css,application/javascript,application/json,image/jpeg,image/jpg
+    min-response-size: 10240
 
 actuator_endpoint_user: xx
 actuator_endpoint_passsword: xx
