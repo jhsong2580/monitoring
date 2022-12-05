@@ -18,4 +18,9 @@ public class Station extends BaseTimeEntity{
     private Long id;
     @Column(unique = true)
     private String name;
+
+
+    public Station(String name) {
+        this.name = name;
+    }
 }

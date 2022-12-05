@@ -18,7 +18,7 @@ public class ApplicationController {
 
     @ResponseBody
     @GetMapping("/api/database")
-    public ResponseEntity<List<SectionDetailDTO>> sections (){
+    public ResponseEntity sections (){
         return ResponseEntity.ok(applicationService.details());
     }
 
@@ -33,5 +33,12 @@ public class ApplicationController {
     public String getImagePage(){
         System.out.println("hi");
         return "hello";
+    }
+
+    @ResponseBody
+    @GetMapping("/api/appendData")
+    public ResponseEntity appendData(){
+        applicationService.append();
+        return ResponseEntity.ok().build();
     }
 }
