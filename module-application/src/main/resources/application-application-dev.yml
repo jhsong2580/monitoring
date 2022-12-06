@@ -47,6 +47,14 @@ server:
     enabled: true
     mime-types: text/html,text/plain,text/css,application/javascript,application/json,image/jpeg,image/jpg
     min-response-size: 10240
+  tomcat:
+    threads:
+      max: 200 # 활성화 할수있는 Thread 총 개수
+      min-spare: 30 # 항상 활성화 되어있는(idle) thread개수
+    max-connections: 8192 # 수립 가능한 Connection 총 개수
+    accept-count: 100 # 작업 큐의 사이즈
+    connection-timeout: 20000 #timeout 판단 기준, 20초
+
 
 actuator_endpoint_user: xx
 actuator_endpoint_password: xx
