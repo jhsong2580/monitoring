@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import monitoring.domain.Station;
 import monitoring.dto.StationDetailDTO;
 import monitoring.repository.StationRepository;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,6 +20,7 @@ public class ApplicationService {
     private final StationRepository stationRepository;
     private boolean appendOnce = false;
 
+    @Cacheable(value = "station", key = "'stations'")
     @Transactional
     public List<StationDetailDTO> details() {
         List<Station> stations = stationRepository.findAll();
