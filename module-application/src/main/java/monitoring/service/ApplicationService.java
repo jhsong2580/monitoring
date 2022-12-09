@@ -2,6 +2,7 @@ package monitoring.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import monitoring.domain.Station;
@@ -45,7 +46,7 @@ public class ApplicationService {
 
         List<Station> datas = new ArrayList<>();
         for (int i = 0; i < 100_000; i++) {
-            datas.add(new Station(String.valueOf(i)));
+            datas.add(new Station(UUID.randomUUID().toString()));
         }
 
         stationRepository.saveAll(datas);
