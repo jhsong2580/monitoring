@@ -24,3 +24,5 @@
 - 이미지 압축
 
 ---
+# 테스트 결과 
+- [K6 Test Result](https://github.com/jhsong2580/monitoring/blob/dbDataCache/k6testResult/K6TestResult.md) : K6 Test 결과
