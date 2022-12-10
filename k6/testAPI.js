@@ -45,25 +45,28 @@ function getBigImages(){
     },
   };
 
-  let bigImageAccessRes1 = http.get(`${BASE_URL}/1.jpeg`, null, params);
-  let bigImageAccessRes2 = http.get(`${BASE_URL}/2.jpeg`, null, params);
-  let bigImageAccessRes3 = http.get(`${BASE_URL}/3.jpeg`, null, params);
-  let bigImageAccessRes4 = http.get(`${BASE_URL}/4.jpeg`, null, params);
-  let bigImageAccessRes5 = http.get(`${BASE_URL}/5.jpg`, null, params);
-  let bigImageAccessRes6 = http.get(`${BASE_URL}/6.jpg`, null, params);
+  // let bigImageAccessRes1 = http.get(`${BASE_URL}/img/1.jpeg`, null, params);
+  let bigImageAccessRes2 = http.get(`${BASE_URL}/img/2.jpeg`, null, params);
+  let bigImageAccessRes3 = http.get(`${BASE_URL}/img/3.jpeg`, null, params);
+  // let bigImageAccessRes4 = http.get(`${BASE_URL}/img/4.jpeg`, null, params);
+  // let bigImageAccessRes5 = http.get(`${BASE_URL}/img/5.jpg`, null, params);
+  // let bigImageAccessRes6 = http.get(`${BASE_URL}/img/6.jpg`, null, params);
 
-  checkRes200(bigImageAccessRes1, "bigImageAccess1_success");
+  // checkRes200(bigImageAccessRes1, "bigImageAccess1_success");
   checkRes200(bigImageAccessRes2, "bigImageAccess2_success");
   checkRes200(bigImageAccessRes3, "bigImageAccess3_success");
-  checkRes200(bigImageAccessRes4, "bigImageAccess4_success");
-  checkRes200(bigImageAccessRes5, "bigImageAccess5_success");
-  checkRes200(bigImageAccessRes6, "bigImageAccess6_success");
+  // checkRes200(bigImageAccessRes4, "bigImageAccess4_success");
+  // checkRes200(bigImageAccessRes5, "bigImageAccess5_success");
+  // checkRes200(bigImageAccessRes6, "bigImageAccess6_success");
 }
 
 function checkRes200(response, successMessage){
   check(response, {
-    successMessage: (resp) => resp.status === 200,
+    successMessage: (resp) => {
+      console.log(resp.status);
+      resp.status === 200
+    },
   });
 }
 
-export {getBigImages};
+export {getBigImages, databaseAPI, sleepAPI};
