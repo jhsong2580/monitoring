@@ -2,7 +2,7 @@ spring:
   cache:
     type: redis
   redis:
-    host: 172.25.192.166
+    host: 172.25.192.116
     port: 6379
   profiles:
     active: application-local
