@@ -2,4 +2,6 @@
 rootProject.name = 'monitoring'
 
 include 'module-application'
+include 'module-kafka'
+include 'module-kafka'
 
