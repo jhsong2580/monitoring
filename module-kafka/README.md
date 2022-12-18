@@ -98,3 +98,31 @@ hello-group     hello.kafka     0          0               8               8
 - hello-group에 hello.kafka라는 토픽이 있고
 - 해당 TOPIC의 0번 Partition의 Offset은 0이고, 마지막 Offset은 8이며, 현재 Offset과 마지막 Offset(읽어야할 레코드) 개수는 8이다(LAG)
 - LAG값이 많아지면 들어오는 Record가 더 많기때문에 Consumer증설을 고려해야한다. 
+
+# kafka-producer-perf-test.sh 
+- 카프카 프로듀서로 퍼포먼스를 측정할때 사용된다. 
+
+### 특정 bootstrap과 특정 topic 에 대해 produce 테스트 
+- ./kafka-producer-perf-test.sh --producer-props bootstrap.servers=my-kafka:9092 --topic hello.kafka --num-records 10 --throughput 1 --record-size 100 --print-metric
+
+### 특정 bootstrap과 특정 topic에 대해 consume 테스트
+- ./kafka-producer-perf-test.sh --producer-props bootstrap.servers=my-kafka:9092 --topic hello.kafka --num-records 10 --throughput 1 --record-size 100 --print-metric
+
+# kafka-reassign-partitions.sh
+- 하나의 브로커에 리더 파티션이 쏠림현상이 발생할때, 리더 파티션/팔로워 파티션 변경&분배를 위해 사용한다. 
+
+# kafka-delete-records.sh
+- 실제로 지우진 않으나, 해당 offset까지의 데이터에 "워터마크"를 찍어 지운 것처럼 동작
+- ./kafka-delete-records.sh --bootstrap-server my-kafka:9092 --offset-json-file delete.json 
+- delete.json
+  {
+  "partitions" : [
+  {
+  "topic" : "hello.kafka", "partition": 0, "offset": 5
+  }
+  ], "version" : 1
+  }
+
+# kafka-dump-log.sh
+- log확인
+- ./kafka-dump-log.sh  --files ./../data/hello.kafka-0/00000000000000000000.log  --deep-iteration
