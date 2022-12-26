@@ -1,6 +1,6 @@
-bootJar { enabled = true }
-jar { enabled = false }
 
+bootJar { enabled = false }
+jar { enabled = true }
 dependencies {
     implementation 'org.apache.kafka:kafka-clients:2.5.0'
 }
