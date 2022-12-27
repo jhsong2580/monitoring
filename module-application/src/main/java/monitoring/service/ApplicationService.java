@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import monitoring.domain.Station;
 import monitoring.dto.StationDetailDTO;
+import monitoring.kafka.KafkaProducerService;
 import monitoring.repository.StationRepository;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
@@ -18,6 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class ApplicationService {
 
     private final StationRepository stationRepository;
+    private final KafkaProducerService kafkaProducerService;
     private boolean appendOnce = false;
 
     @Cacheable(value = "station", key = "'stations'")
@@ -33,10 +35,16 @@ public class ApplicationService {
 
     public void sleep() {
         try {
+            kafkaProducerService.produce("localtest", "hello!!!!");
             Thread.sleep(3_000L);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public void kafkaWithKey(){
+        kafkaProducerService.produceAndSyncCallback("localtest", "testMessageAndSy");
+
     }
 
     @Transactional

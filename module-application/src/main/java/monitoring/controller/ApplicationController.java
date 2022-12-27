@@ -29,6 +29,11 @@ public class ApplicationController {
         return ResponseEntity.ok().build();
     }
 
+    @GetMapping("/api/kafka")
+    public ResponseEntity kafka (){
+        applicationService.kafkaWithKey();
+        return ResponseEntity.ok().build();
+    }
     @GetMapping("/api/image")
     public String getImagePage(){
         System.out.println("hi");
