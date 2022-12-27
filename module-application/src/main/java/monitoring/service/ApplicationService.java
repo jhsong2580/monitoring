@@ -42,6 +42,11 @@ public class ApplicationService {
         }
     }
 
+    public void kafkaWithKey(){
+        kafkaProducerService.produceAndSyncCallback("localtest", "testMessageAndSy");
+
+    }
+
     @Transactional
     public void append() {
         if (appendOnce) {

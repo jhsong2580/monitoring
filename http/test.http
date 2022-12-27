@@ -1,0 +1,5 @@
+
+###
+GET {{host}}/api/kafka
+Content-Type: application/json
+
