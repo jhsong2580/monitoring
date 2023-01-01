@@ -1,5 +1,5 @@
 package monitoring.domain;
 
-public enum OAuthType {
+public enum AuthType {
     GOOGLE, NORMAL
 }

@@ -20,7 +20,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
-public class OAuth {
+public class Oauth {
 
     @Id
     @Column(name = "oauth_id")
@@ -30,18 +30,18 @@ public class OAuth {
     private String authId;
     private String password;
     @Enumerated(STRING)
-    private OAuthType oAuthType;
+    private AuthType authType;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "member_id", foreignKey = @ForeignKey(name = "fk_oauth_member"))
     private Member member;
 
     @Builder
-    public OAuth(String authId, String password, OAuthType oAuthType, Member member) {
+    public Oauth(String authId, String password, AuthType authType, Member member) {
         this.id = UUID.randomUUID().toString();
         this.authId = authId;
         this.password = password;
-        this.oAuthType = oAuthType;
+        this.authType = authType;
         this.member = member;
     }
 

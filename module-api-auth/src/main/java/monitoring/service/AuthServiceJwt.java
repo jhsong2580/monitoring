@@ -5,9 +5,9 @@ import lombok.RequiredArgsConstructor;
 import monitoring.configuration.jwt.TokenProvider;
 import monitoring.domain.Member;
 import monitoring.domain.MemberRepository;
-import monitoring.domain.OAuth;
-import monitoring.domain.OAuthRepository;
-import monitoring.domain.OAuthType;
+import monitoring.domain.Oauth;
+import monitoring.domain.OauthRepository;
+import monitoring.domain.AuthType;
 import monitoring.dto.request.NormalTokenRequest;
 import monitoring.dto.request.OAuthTokenRequest;
 import monitoring.dto.response.MemberDTO;
@@ -19,13 +19,13 @@ import org.springframework.stereotype.Service;
 public class AuthServiceJwt implements AuthService {
 
     private final TokenProvider tokenProvider;
-    private final OAuthRepository oAuthRepository;
+    private final OauthRepository oAuthRepository;
     private final MemberRepository memberRepository;
 
     @Override
     public TokenResponse login(NormalTokenRequest tokenRequest) {
-        OAuth oauth = oAuthRepository.findByAuthIdAndOAuthType(tokenRequest.getEmail(),
-                OAuthType.NORMAL)
+        Oauth oauth = oAuthRepository.findByAuthIdAndAuthType(tokenRequest.getEmail(),
+                AuthType.NORMAL)
             .orElseThrow(() -> new IllegalArgumentException("oauth not exist"));
 
         if (!oauth.passwordCheck(tokenRequest.getPassword())) {
@@ -39,8 +39,8 @@ public class AuthServiceJwt implements AuthService {
 
     @Override
     public TokenResponse login(OAuthTokenRequest tokenRequest) {
-        OAuth oauth = oAuthRepository.findByAuthIdAndOAuthType(tokenRequest.getOauthId(),
-                OAuthType.NORMAL)
+        Oauth oauth = oAuthRepository.findByAuthIdAndAuthType(tokenRequest.getOauthId(),
+                AuthType.NORMAL)
             .orElseThrow(() -> new IllegalArgumentException("oauth not exist"));
 
         String token = tokenProvider.createToken(oauth.getMember().getId());
