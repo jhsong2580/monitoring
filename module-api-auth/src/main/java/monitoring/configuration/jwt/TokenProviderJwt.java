@@ -15,18 +15,13 @@ public class TokenProviderJwt implements TokenProvider {
     @Value("${security.jwt.token.secret-key}")
     private String secretKey;
     @Value("${security.jwt.token.expire-length}")
-    private long validityInMilliseconds;
-
-    public TokenProviderJwt(String secretKey, long validityInMilliseconds) {
-        this.secretKey = secretKey;
-        this.validityInMilliseconds = validityInMilliseconds;
-    }
+    private String validityInMilliseconds;
 
     @Override
     public String createToken(String payload) {
         Claims claims = Jwts.claims().setSubject(payload);
         Date now = new Date();
-        Date validity = new Date(now.getTime() + validityInMilliseconds);
+        Date validity = new Date(now.getTime() + Long.valueOf(validityInMilliseconds));
 
         return Jwts.builder()
             .setClaims(claims)

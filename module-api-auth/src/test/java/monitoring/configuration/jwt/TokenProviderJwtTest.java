@@ -5,18 +5,23 @@ import static org.assertj.core.api.Assertions.assertThat;
 import java.util.UUID;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.boot.test.context.ConfigFileApplicationContextInitializer;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.TestPropertySource;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+@ActiveProfiles(profiles = "jwt-test")
+@EnableConfigurationProperties
+@SpringBootTest(classes = TokenProviderJwt.class)
 class TokenProviderJwtTest {
 
+    @Autowired
     private TokenProvider tokenProviderJwt;
-
-    @BeforeEach
-    public void init() {
-        tokenProviderJwt = new TokenProviderJwt(
-            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIiLCJuYW1lIjoiSm9obiBEb2UiLCJpYXQiOjE1MTYyMzkwMjJ9.ih1aovtQShabQ7l0cINw4k1fagApg3qLWiB8Kt59Lno",
-            3600000L
-        );
-    }
 
     @Test
     public void tokenCreateSuccess() {

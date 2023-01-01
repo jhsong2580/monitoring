@@ -10,9 +10,9 @@ import java.util.UUID;
 import monitoring.configuration.jwt.TokenProvider;
 import monitoring.domain.Member;
 import monitoring.domain.MemberRepository;
-import monitoring.domain.OAuth;
-import monitoring.domain.OAuthRepository;
-import monitoring.domain.OAuthType;
+import monitoring.domain.Oauth;
+import monitoring.domain.OauthRepository;
+import monitoring.domain.AuthType;
 import monitoring.dto.request.NormalTokenRequest;
 import monitoring.dto.request.OAuthTokenRequest;
 import monitoring.dto.response.MemberDTO;
@@ -34,7 +34,7 @@ class AuthServiceJwtTest {
     @Mock
     private TokenProvider tokenProvider;
     @Mock
-    private OAuthRepository oAuthRepository;
+    private OauthRepository oAuthRepository;
     @Mock
     private MemberRepository memberRepository;
 
@@ -56,9 +56,9 @@ class AuthServiceJwtTest {
             .phoneNumber("010-9999-9999")
             .build();
 
-        OAuth oauth = OAuth.builder()
+        Oauth oauth = Oauth.builder()
             .authId(email)
-            .oAuthType(OAuthType.NORMAL)
+            .authType(AuthType.NORMAL)
             .password(password)
             .member(member)
             .build();
@@ -87,9 +87,9 @@ class AuthServiceJwtTest {
             .phoneNumber("010-9999-9999")
             .build();
 
-        OAuth oauth = OAuth.builder()
+        Oauth oauth = Oauth.builder()
             .authId(email)
-            .oAuthType(OAuthType.NORMAL)
+            .authType(AuthType.NORMAL)
             .password(password)
             .member(member)
             .build();
@@ -114,9 +114,9 @@ class AuthServiceJwtTest {
             .phoneNumber("010-9999-9999")
             .build();
 
-        OAuth oauth = OAuth.builder()
+        Oauth oauth = Oauth.builder()
             .authId(oauthId)
-            .oAuthType(OAuthType.NORMAL)
+            .authType(AuthType.NORMAL)
             .password(password)
             .member(member)
             .build();
@@ -178,8 +178,8 @@ class AuthServiceJwtTest {
         when(memberRepository.findById(member.getId())).thenReturn(Optional.of(member));
     }
 
-    private void mockOAuth(OAuth oauth) {
-        when(oAuthRepository.findByAuthIdAndOAuthType(oauth.getAuthId(), oauth.getOAuthType()))
+    private void mockOAuth(Oauth oauth) {
+        when(oAuthRepository.findByAuthIdAndAuthType(oauth.getAuthId(), oauth.getAuthType()))
             .thenReturn(Optional.of(oauth));
     }
 
