@@ -34,12 +34,9 @@ public class ApplicationService {
     }
 
     public void sleep() {
-        try {
-            kafkaProducerService.produce("localtest", "hello!!!!");
-            Thread.sleep(3_000L);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+
+        kafkaProducerService.produce("localtest", "hello!!!!");
+
     }
 
     public void kafkaWithKey(){
