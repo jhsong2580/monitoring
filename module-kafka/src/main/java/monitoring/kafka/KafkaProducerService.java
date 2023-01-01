@@ -31,7 +31,7 @@ public class KafkaProducerService {
 
         ProducerRecord<String, String> record = new ProducerRecord<>(topic, message);
 
-        kafkaCustomProducer.send(record);
+        kafkaNormalProducer.send(record);
         logger.info("{}", record);
     }
 

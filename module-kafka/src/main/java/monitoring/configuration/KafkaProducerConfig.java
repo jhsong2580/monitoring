@@ -42,7 +42,7 @@ public class KafkaProducerConfig {
         configs.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
         configs.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
         configs.put(ProducerConfig.PARTITIONER_CLASS_CONFIG, CustomPartitioner.class);
-
+//        configs.put(ProducerConfig.ENABLE_IDEMPOTENCE_CONFIG, true); // 단 한번만 전달.
         return new KafkaProducer(configs);
     }
 
