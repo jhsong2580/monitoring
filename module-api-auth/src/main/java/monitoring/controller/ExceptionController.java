@@ -21,4 +21,9 @@ public class ExceptionController {
             .collect(Collectors.toList());
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorInfo);
     }
+
+    @ExceptionHandler
+    private ResponseEntity handleException(IllegalArgumentException e){
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+    }
 }
