@@ -11,8 +11,7 @@ import org.springframework.web.context.request.NativeWebRequest;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.method.support.ModelAndViewContainer;
 
-@Component
-@RequiredArgsConstructor
+
 public class JwtTokenResolver implements HandlerMethodArgumentResolver {
 
     @Override
