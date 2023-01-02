@@ -27,7 +27,7 @@ public class JwtTokenResolver implements HandlerMethodArgumentResolver {
             webRequest.getNativeRequest(HttpServletRequest.class));
 
         if(ObjectUtils.isEmpty(token)){
-            throw new IllegalArgumentException("token required");
+            throw new IllegalArgumentException("JWT Token Required");
         }
 
         return token;
