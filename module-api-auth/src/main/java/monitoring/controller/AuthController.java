@@ -15,6 +15,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -28,7 +29,7 @@ public class AuthController {
         produces = MediaType.APPLICATION_JSON_VALUE
     )
     public ResponseEntity auth(
-        @Validated NormalTokenRequest tokenRequest,
+        @Validated @RequestBody NormalTokenRequest tokenRequest,
         BindingResult bindingResult
     ) {
         if (bindingResult.hasErrors()) {
@@ -45,7 +46,7 @@ public class AuthController {
         produces = MediaType.APPLICATION_JSON_VALUE
     )
     public ResponseEntity auth(
-        @Validated OAuthTokenRequest tokenRequest,
+        @Validated @RequestBody OAuthTokenRequest tokenRequest,
         BindingResult bindingResult
     ) {
         if (bindingResult.hasErrors()) {
