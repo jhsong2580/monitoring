@@ -1,9 +1,9 @@
-package monitoring.service;
+package monitoring.backend.oauth;
 
 import lombok.RequiredArgsConstructor;
 import monitoring.enums.OAuthType;
-import monitoring.service.oauth.GoogleOauthRestTemplate;
-import monitoring.service.oauth.OAuthRestTemplate;
+import monitoring.backend.oauth.GoogleOauthRestTemplate;
+import monitoring.backend.oauth.OAuthRestTemplate;
 import org.springframework.stereotype.Component;
 
 @Component

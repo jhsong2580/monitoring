@@ -1,4 +1,4 @@
-package monitoring.service.oauth;
+package monitoring.backend.oauth;
 
 
 import java.net.URI;

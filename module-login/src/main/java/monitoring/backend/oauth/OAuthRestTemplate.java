@@ -1,4 +1,4 @@
-package monitoring.service.oauth;
+package monitoring.backend.oauth;
 
 import monitoring.dto.AuthInfoDTO;
 import org.springframework.web.client.RestTemplate;
