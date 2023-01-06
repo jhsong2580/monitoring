@@ -1,2 +1,15 @@
 endpoints:
   auth: 127.0.0.1:8000
+
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 53334448017-oquc4pcc5nejf9a8dggs9c1mkvvnt577.apps.googleusercontent.com
+            client-secret: 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
+            auth-endpoint: https://accounts.google.com/o/oauth2/auth
+            redirect-url: http://localhost:8080/oauth2/code/google
+            token-endpoint: https://www.googleapis.com/oauth2/v4/token
+            fetching_data_endpoint: https://www.googleapis.com/oauth2/v2/userinfo
